@@ -14,16 +14,25 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
+    if(!user_signed_in?)then
+      redirect_to "/"
+    end
     @article = Article.new
   end
 
   # GET /articles/1/edit
   def edit
+    if(!user_signed_in?)then
+      redirect_to "/"
+    end
   end
 
   # POST /articles
   # POST /articles.json
   def create
+    if(!user_signed_in?)then
+      redirect_to "/"
+    end
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -40,6 +49,9 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    if(!user_signed_in?)then
+        redirect_to "/"
+    end
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to "/" }
@@ -54,6 +66,9 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    if(!user_signed_in?)then
+      redirect_to "/"
+    end
     @article.destroy
     respond_to do |format|
       format.html { redirect_to "/" }
