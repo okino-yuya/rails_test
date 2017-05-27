@@ -10,7 +10,8 @@
       <% @articles.each do |article| %>
 
         <div>
-            <h2><a><%= link_to "#{article.title}", "articles/#{article.id}" %></a></h2>
+            <h2><a><%= link_to "#{article.title}", controller: 'articles', action: 'show', id: "#{article.id}" %></a></h2>
+            <!-- <h2><a><%= link_to "#{article.title}", "articles/#{article.id}" %></a></h2> -->
             <p><%= article.updated_at.strftime('%Y/%m/%d') %></p>
               <% if user_signed_in? %>
                 <p>
