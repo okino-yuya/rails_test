@@ -15,44 +15,13 @@
             <p><%= article.updated_at.strftime('%Y/%m/%d') %></p>
               <% if user_signed_in? %>
                 <p>
-                    <a><%= link_to "編集", "articles/#{article.id}/edit" %></a>
-                    <a><%= link_to "削除", "articles/#{article.id}" %></a>
+                    <%= link_to "編集", "articles/#{article.id}/edit" %>
+                    <%= link_to "削除", "articles/#{article.id}", rel: "nofollow", method: "delete" %>
                 </p>
               <% else %>
               <% end %>
         </div>
       <% end %>
-
-        <!-- <div>
-            <h2><a href="/single.html">Railsでnil? blank? empty? present?メソッドの違い</a></h2>
-            <p>2015-09-20</p>
-        </div>
-
-        <div>
-            <h2><a href="/single.html">Github-flowで実践する初心者でも取り組みやすいGitワークフロー</a></h2>
-            <p>2015-09-17</p>
-        </div>
-
-        <div>
-            <h2><a href="/single.html">メタリックなテキストやボタンを作成するチュートリアルまとめ</a></h2>
-            <p>2015-09-16</p>
-        </div>
-
-        <div>
-            <h2><a href="/single.html">Photoshopのクリッピングパスを使いこなすために知っておきたいことまとめ</a></h2>
-            <p>2015-09-13</p>
-        </div>
-
-        <div>
-            <h2><a href="/single.html">自由自在に選択範囲の作成ができるクイックマスク機能を使ってみよう</a></h2>
-            <p>2015-09-11</p>
-        </div>
-
-        <div>
-            <h2><a href="/single.html">POPなどの印刷物をIllustratorで作る時にしてほしい設定</a></h2>
-            <p>2015-09-10</p>
-        </div> -->
-
     </div>
 
     <div id="sidebar">

@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @email = User.find(@article.user_id).email
   end
 
   # GET /articles/new

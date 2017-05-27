@@ -1,6 +1,13 @@
-<%= stylesheet_link_tag "style", :media => "all" %>
+<div id="article_wrap">
+  <!-- <%= render 'form', article: @article %> -->
+  <%= form_for(@article) do |f| %>
+  タイトル<br>
+  <%= text_area :article, :title %><br><br>
+  記事内容<br>
+  <%= text_area :article, :content %><br>
+  <br>
+  <%=button_tag "Update Article" %>
 
-</head>
-<body>
-<div><%= render 'form', article: @article %></div>
-</body>
+  <% end %>
+
+</div>
