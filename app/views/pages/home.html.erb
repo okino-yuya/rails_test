@@ -11,9 +11,17 @@
     <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
     <nav>
         <ul>
-            <li><a href='/'>トップ</a></li>
-            <li><a href="users/sign_up">ユーザー登録</a></li>
-            <li><a href="users/sign_in">ログイン</a></li>
+            <!-- ログインしてない時 -->
+            <% if !user_signed_in? %>
+              <li><a href='/'>トップ</a></li>
+              <li><a href="users/sign_up">ユーザー登録</a></li>
+              <li><a href="users/sign_in">ログイン</a></li>
+            <!-- ログイン時 -->
+            <% else %>
+              <li><a href='/'>トップ</a></li>
+              <li><a href="">新規投稿</a></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><li>
+            <% end %>
             <div class="clear"></div>
         </ul>
     </nav>
