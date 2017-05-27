@@ -1,6 +1,59 @@
-<h1>Editing Article</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link rel="stylesheet" media="all" href="/assets/application-5efc28c5ef4ef13b6485f8a2aae9a7de949c67094d3ebb03f5fab9ab66020986.css" data-turbolinks-track="true" />
+  <script src="/assets/application-2d5ece0584bd29f0d75c6d2fe380067ed1bd0ee8a594e1fdf4e3629b3b14dec8.js" data-turbolinks-track="true"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="8z3+kBSkhCeHSUwexnoQSMzbnaEcZr8d3r+fh2bVAEssAJV27mpToelmUI1Ds3X4+kxaclxmT6Tal0NRlPM7LQ==" />
+</head>
+<body>
 
-<%= render 'form', article: @article %>
+  <header>
+      <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+      <nav>
+          <ul>
+              <!-- ログインしてない時 -->
+              <% if !user_signed_in? %>
+                <li><a href='/'>トップ</a></li>
+                <li><a href="users/sign_up">ユーザー登録</a></li>
+                <li><a href="users/sign_in">ログイン</a></li>
+              <!-- ログイン時 -->
+              <% else %>
+                <li><a href='/'>トップ</a></li>
+                <li><a href="articles/new">新規投稿</a></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><li>
+              <% end %>
+              <div class="clear"></div>
+          </ul>
+      </nav>
+      <div class="clear"></div>
+  </header>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+<!-- <div id="article_wrap">
+    <form class="edit_article" id="edit_article_22" action="/articles/22" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="UCDhP1qW/Gy07uE+/TMH8ox6fDvl/9pCsZBwsVFBqeyPHYrZoFgr6trB/a14+mJCuu276KX/Kvu1uKxno2eSig==" />
+        タイトル<br>
+        <input type="text" value="" name="article[title]" id="article_title" />
+        <br><br>
+
+        記事内容<br>
+        <textarea name="article[content]" id="article_content">
+</textarea>
+        <br><br>
+
+        <input type="submit" name="commit" value="Update Article" />
+
+        <br><br>
+
+</form>
+</div> -->
+<div><%= render 'form', article: @article %></div>
+<footer>
+    <div id="footer_inner">
+        <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+    </div>
+</footer>
+
+
+</body>
+</html>

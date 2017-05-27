@@ -1,44 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head lang="ja">
-    <meta charset="UTF-8">
-    <title>Rails Camp Blog</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-</head>
-<body>
-
-<header>
-    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
-    <nav>
-        <ul>
-            <!-- ログインしてない時 -->
-            <% if !user_signed_in? %>
-              <li><a href='/'>トップ</a></li>
-              <li><a href="users/sign_up">ユーザー登録</a></li>
-              <li><a href="users/sign_in">ログイン</a></li>
-            <!-- ログイン時 -->
-            <% else %>
-              <li><a href='/'>トップ</a></li>
-              <li><a href="">新規投稿</a></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><li>
-            <% end %>
-            <div class="clear"></div>
-        </ul>
-    </nav>
-    <div class="clear"></div>
-</header>
 
 <div id="main">
     <%= image_tag 'main-img.jpg' %>
 </div>
 
-
 <div id="article_wrap">
 
     <div id="article_list">
 
-      <% (1..10).each do |n| %>
-      <%= n %>
+      <% @articles.each do |article| %>
+
+        <div>
+            <h2><a><%= link_to "#{article.title}", "articles/#{article.id}" %></a></h2>
+            <p><%= article.updated_at.strftime('%Y/%m/%d') %></p>
+              <% if user_signed_in? %>
+                <p>
+                    <a><%= link_to "編集", "articles/#{article.id}/edit" %></a>
+                    <a><%= link_to "削除", "articles/#{article.id}" %></a>
+                </p>
+              <% else %>
+              <% end %>
+        </div>
       <% end %>
 
         <!-- <div>
@@ -90,6 +71,3 @@
         <p>Copyright RailsCamp 2015 All Rights Reserved</p>
     </div>
 </footer>
-
-</body>
-</html>

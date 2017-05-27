@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestRails</title>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>Rails Camp Blog</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag "style", :media => "all" %>
+
+</head>
+<body>
+
+<header>
+    <p id="logo"><a href="/">RailsCamp<span>Blog</span></a></p>
+    <nav>
+        <ul>
+            <!-- ログインしてない時 -->
+            <% if !user_signed_in? %>
+              <li><a href='/'>トップ</a></li>
+              <li><a href="/users/sign_up">ユーザー登録</a></li>
+              <li><a href="/users/sign_in">ログイン</a></li>
+            <!-- ログイン時 -->
+            <% else %>
+              <li><a href='/'>トップ</a></li>
+              <li><a href="/articles/new">新規投稿</a></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%><li>
+            <% end %>
+            <div class="clear"></div>
+        </ul>
+    </nav>
+    <div class="clear"></div>
+</header>
 
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+      <div id="footer_inner">
+          <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+      </div>
+  </footer>
 </html>
