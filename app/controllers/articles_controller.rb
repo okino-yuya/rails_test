@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
+    @user = current_user
     if(!user_signed_in?)then
       redirect_to "/"
     end
@@ -52,7 +53,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     if(!user_signed_in?)then
-        redirect_to "/"
+      redirect_to "/"
     end
     respond_to do |format|
       if @article.update(article_params)

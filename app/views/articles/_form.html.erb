@@ -12,18 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+    <!-- <%= f.label :user_id %>
+    <%= f.number_field :user_id%> -->
+    <input type="hidden", name="article[user_id]", id= "article_user_id", value= <%=user.id%>>
   </div>
 
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
   </div>
 
   <div class="actions">
