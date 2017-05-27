@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :articles
   # get '/', to:"pages#home"
   root "pages#home"
   devise_for :users
